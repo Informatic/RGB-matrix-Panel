@@ -135,13 +135,13 @@ RGBmatrixPanel::RGBmatrixPanel(
   init(8, a, b, c, sclk, latch, oe, dbuf, 32);
 }
 
-// Constructor for 32x32 or 32x64 panel:
+// Constructor for 32x32, 32x64 panel or 2 * 16x32 setup:
 RGBmatrixPanel::RGBmatrixPanel(
   uint8_t a, uint8_t b, uint8_t c, uint8_t d,
-  uint8_t sclk, uint8_t latch, uint8_t oe, boolean dbuf, uint8_t width) :
-  Adafruit_GFX(width, 32) {
+  uint8_t sclk, uint8_t latch, uint8_t oe, boolean dbuf, uint8_t width, uint8_t height) :
+  Adafruit_GFX(width, height) {
 
-  init(16, a, b, c, sclk, latch, oe, dbuf, width);
+  init(height/2, a, b, c, sclk, latch, oe, dbuf, width);
 
   // Init a few extra 32x32-specific elements:
   _d        = d;
